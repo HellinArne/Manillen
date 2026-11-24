@@ -350,7 +350,7 @@ function posChart(){
   });
   s+='</svg>';
   var leg='<div class="legend2">'+H[H.length-1].order.map(function(o){return '<span><i style="background:var(--p-'+o.id+')"></i>'+esc(NAME[o.id])+'</span>'}).join('')+'</div>';
-  return '<div class="card chart"><div class="chart-head"><h3>Gewonnen bomen per speeldag</h3>'+leg+'</div>'+s+'</div>';
+  return '<div class="card chart"><div class="chart-head"><h3>Evolutie der bomen</h3>'+leg+'</div>'+s+'</div>';
 }
 function troefSection(c){
   var tot=0;[1,2,3,4,'M'].forEach(function(k){tot+=c.suitTotals[k]});
