@@ -119,7 +119,7 @@ details.day[open]{padding-bottom:14px}
 details.day>summary:hover .chev{background:var(--bg)}
 .chev{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);color:var(--muted);transition:transform .2s}
 details.day[open]>summary .chev{transform:rotate(180deg)}
-.iconbtn{position:absolute;top:8px;right:8px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
+.iconbtn{position:absolute;top:8px;right:38px;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
 .iconbtn:hover{background:var(--bg);color:var(--ink)}
 details.day>summary{list-style:none;cursor:pointer;padding:14px 0;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
 details.day>summary::-webkit-details-marker{display:none}
@@ -144,12 +144,12 @@ table.blad .tag.pos{color:var(--green)}
 table.blad .tag.neg{color:var(--red)}
 .gh{display:flex;align-items:center;gap:6px;min-height:30px;flex-wrap:wrap;cursor:pointer;list-style:none}
 .gh::-webkit-details-marker{display:none}
-.game:has(.iconbtn)>.gh{padding-right:30px}
-.gh .eyebrow{flex:1 1 0;min-width:0}
-.gchev{flex:none;color:var(--muted);transition:transform .2s}
+.game:has(.iconbtn) .gh .eyebrow{margin-right:34px}
+.gh .eyebrow{order:1;flex:1 1 0;min-width:0}
+.gchev{order:2;flex:none;color:var(--muted);transition:transform .2s}
 details.game[open] .gchev{transform:rotate(180deg)}
 .game>table{margin-top:10px}
-.mini{flex:1 0 100%;display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--muted);margin-top:4px}
+.mini{order:3;flex:1 0 100%;display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--muted);margin-top:4px}
 .mini b{color:var(--ink);font-family:var(--font-display);margin-left:2px}
 .mini .win{color:var(--ink);font-weight:700}
 details.game[open] .mini{display:none}
