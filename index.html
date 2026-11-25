@@ -14,7 +14,7 @@
   --accent:#B3261E; --accent-ink:#FFFFFF; --soft:#F3DEDC;
   --green:#1E8559; --orange:#D98A1F; --red:#CC433C;
   --t1:light-dark(#1B1F1D,#E8EDE6); --t2:light-dark(#B3261E,#F28B82); --t-ink:light-dark(#FFFFFF,#161515);
-  --p-L:light-dark(#2a78d6,#3987e5); --p-A:light-dark(#eb6834,#d95926); --p-S:light-dark(#1baf7a,#199e70); --p-Z:light-dark(#eda100,#c98500);
+  --p-L:light-dark(#2a78d6,#3987e5); --p-A:light-dark(#eb6834,#d95926); --p-S:light-dark(#1baf7a,#199e70); --p-Z:light-dark(#eda100,#c98500); --pi-L:#fff; --pi-A:#fff; --pi-S:#fff; --pi-Z:#1a1a19;
   --font-display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
   --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
 }
@@ -61,7 +61,8 @@ button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visi
 .pod .pm{color:var(--muted);font-size:13px}
 .pod .blk{display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:40px;border-radius:10px 10px 0 0;
   background:var(--soft);color:var(--accent)}
-.pod.r1 .blk{height:128px;background:var(--accent);color:var(--accent-ink)}
+.pod .blk{background:var(--pc);color:var(--pi)}
+.pod.r1 .blk{height:128px}
 .pod.r2 .blk{height:96px}
 .pod.r3 .blk{height:72px}
 .pod.r4 .blk{height:48px;font-size:30px}
@@ -95,6 +96,38 @@ td.lead{font-weight:600}
 .bar-row .lab{display:flex;gap:8px;align-items:center;min-width:0;overflow-wrap:anywhere}
 .track{position:relative;height:22px;border-left:1px solid var(--line)}
 .fill{height:100%;border-radius:0 4px 4px 0}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:10px}
+.mulsym{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1;color:var(--ink)}
+.tile{background:var(--bg);border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tsuit{font-size:26px;line-height:1;height:30px;display:flex;align-items:center;color:var(--c)}
+.tsuit *{color:var(--c)}
+.tname{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.tnum{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1.1;color:var(--ink)}
+.tnum span{font-size:13px;font-weight:500;color:var(--muted);font-family:inherit;margin-left:2px}
+.tbar{height:8px;border-radius:4px;background:var(--surface);margin-top:8px;overflow:hidden}
+.tbar i{display:block;height:100%;border-radius:4px;background:var(--c)}
+.tcap{font-size:12px;color:var(--muted);margin-top:4px}
+.mulline{margin-top:12px;font-size:13px;color:var(--muted)}
+.mulline b{color:var(--ink)}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile.tmul{grid-column:1/-1}}
+table.ttab{border-collapse:separate;border-spacing:0 4px;margin-top:6px}
+table.ttab th,table.ttab td{border:0;text-align:center;padding:10px 8px}
+table.ttab th:first-child,table.ttab td:first-child{text-align:left}
+table.ttab th{padding-top:2px;padding-bottom:6px;font-size:12px}
+table.ttab th .suit{font-size:18px;letter-spacing:0}
+table.ttab td{background:var(--bg);font-size:15px}
+table.ttab td:first-child{border-radius:10px 0 0 10px;box-shadow:inset 5px 0 0 var(--pc);padding-left:18px}
+table.ttab td:last-child{border-radius:0 10px 10px 0}
+table.ttab td.lead{font-family:var(--font-display);font-size:15px;white-space:nowrap}
+.pdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:9px;vertical-align:baseline}
+table.ttab .top{display:inline-block;min-width:28px;padding:2px 8px;border-radius:999px;background:var(--ink);color:var(--surface);font-weight:700}
+table.ttab .zero{color:var(--muted);opacity:.5}
+table.ttab .sep{color:var(--muted)}
+table.ttab th.sep{padding-left:18px}
+@media (max-width:560px){table.ttab th,table.ttab td{padding:9px 2px}table.ttab th:first-child{padding-left:8px}table.ttab td:first-child{padding-left:14px}table.ttab td{font-size:14px}table.ttab td.lead{font-size:14px}.pdot{margin-right:6px}table.ttab .top{min-width:24px;padding:2px 5px}table.ttab th{letter-spacing:0;font-size:11px}table.ttab th.sep{padding-left:2px}table.ttab td:last-child{padding-right:6px}}
+.feestkop{font-family:var(--font-display);font-size:19px;font-weight:700;letter-spacing:.01em;color:var(--ink);margin:0 0 2px}
+.mulval{font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.track .goal{position:absolute;right:0;top:-3px;bottom:-3px;width:2px;border-radius:1px;background:var(--ink);opacity:.35}
 .bv{position:absolute;top:50%;transform:translateY(-50%);font-weight:600;font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink)}
 .bar-row .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
 
@@ -107,6 +140,9 @@ td.lead{font-weight:600}
 .player .head+.grp{margin-top:12px}
 .player .head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .badge{font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--accent)}
+.card.player{box-shadow:inset 0 5px 0 var(--pc);padding-top:20px}
+.card.player .badge{background:var(--pc);color:var(--pi)}
+.pu{text-decoration:underline;text-decoration-color:var(--pc);text-decoration-thickness:3px;text-underline-offset:4px;text-decoration-skip-ink:none}
 
 /* tempo */
 .tempo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
@@ -131,7 +167,7 @@ table.blad th{font-weight:400;padding:8px 4px}
 table.blad th.t1{background:var(--t1);color:var(--t-ink)}
 table.blad th.t2{background:var(--t2);color:var(--t-ink)}
 table.blad th.win{font-weight:700}
-table.blad .tn{font-size:12px;white-space:normal;line-height:1.2}
+table.blad .tn{font-size:12px;white-space:normal;line-height:1.3;margin-bottom:4px}
 table.blad .ts{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.1}
 table.blad td{height:28px;background:var(--surface)}
 table.blad td.t1{background:var(--t1);color:var(--t-ink)}
@@ -235,7 +271,7 @@ input,select{background:var(--bg);border:1px solid var(--line);border-radius:8px
 var PL=[{id:'L',n:'Leon'},{id:'A',n:'Arne'},{id:'S',n:'Siebe'},{id:'Z',n:'Zeno'}];
 var NAME={};PL.forEach(function(p){NAME[p.id]=p.n});
 var GLYPH={1:'♣︎',2:'♠︎',3:'♦︎',4:'♥︎'};
-var DEFAULT_SUITS={1:'Klaveren',2:'Pijken',3:'Koeken',4:'Hartjes'};
+var DEFAULT_SUITS={1:'Klavers',2:'Piekens',3:'Koekens',4:'Hertens'};
 var state={games:[],suits:Object.assign({},DEFAULT_SUITS),canEdit:false,db:null,loaded:false,error:'',ed:null,confirmDel:false};
 var $root=document.getElementById('root'),$status=document.getElementById('status'),$ed=document.getElementById('editor');
 
@@ -288,7 +324,7 @@ function compute(){
 /* ----- weergave ----- */
 function podium(c){
   var r=c.rank;
-  function pod(p,pos){return '<div class="pod r'+pos+'"><div class="who"><div class="pn">'+esc(NAME[p.id])+'</div><div class="pm num">'+p.won+' ~ '+p.pts+' ptn</div></div><div class="blk">'+pos+'</div></div>'}
+  function pod(p,pos){return '<div class="pod r'+pos+'" style="--pc:var(--p-'+p.id+');--pi:var(--pi-'+p.id+')"><div class="who"><div class="pn">'+esc(NAME[p.id])+'</div><div class="pm num">'+p.won+' ~ '+p.pts+' ptn</div></div><div class="blk">'+pos+'</div></div>'}
   var h='<div class="podium">'+pod(r[1],2)+pod(r[0],1)+pod(r[2],3)+pod(r[3],4)+'</div>';
   h+=posChart();
   return h;
@@ -353,17 +389,26 @@ function posChart(){
   return '<div class="card chart"><div class="chart-head"><h3>Evolutie der bomen</h3>'+leg+'</div>'+s+'</div>';
 }
 function troefSection(c){
-  var tot=0;[1,2,3,4,'M'].forEach(function(k){tot+=c.suitTotals[k]});
-  var max=Math.max.apply(null,[1,2,3,4,'M'].map(function(k){return c.suitTotals[k]}).concat([1]));
-  var bars=[1,2,3,4,'M'].map(function(k){
-    var v=c.suitTotals[k],pct=tot?Math.round(v/tot*100):0;
-    var lab=k==='M'?'<span class="suit" style="font-weight:700">Mul</span>':suitHtml(k)+' '+esc(state.suits[k]);
-    var col=k==='M'?'var(--muted)':(k<=2?'var(--t1)':'var(--t2)'),w=(v/max*88).toFixed(1);
-    return '<div class="bar-row"><div class="lab">'+lab+'</div><div class="track"><div class="fill" style="width:'+w+'%;background:'+col+'"></div><span class="bv" style="left:calc('+w+'% + 8px)">'+v+'</span></div></div>';
+  var tiles=[1,2,3,4,'M'].map(function(k){
+    var GOAL=k==='M'?100:500;
+    var v=c.suitTotals[k],col=k==='M'?'var(--ink)':(k<=2?'var(--t1)':'var(--t2)');
+    var w=Math.min(100,v/GOAL*100),fw=v>0?Math.max(w,2).toFixed(1):'0';
+    var cap=v>=GOAL?'Feest!':'nog '+(GOAL-v);
+    var sym=k==='M'?'<span class="mulsym">Mul</span>':suitHtml(k);
+    var nm=k==='M'?'Zonder troef':esc(state.suits[k]);
+    return '<div class="tile'+(k==='M'?' tmul':'')+'" style="--c:'+col+'"><div class="tsuit">'+sym+'</div><div class="tname">'+nm+'</div>'
+      +'<div class="tnum">'+v+'<span> / '+GOAL+'</span></div>'
+      +'<div class="tbar"><i style="width:'+fw+'%"></i></div><div class="tcap">'+cap+'</div></div>';
   }).join('');
-  var head='<tr><th>Speler</th>'+[1,2,3,4].map(function(k){return '<th>'+suitHtml(k)+'</th>'}).join('')+'<th>Mul</th><th>Delen</th></tr>';
-  var body=PL.map(function(p){var s=c.S[p.id];return '<tr><td class="lead">'+esc(p.n)+'</td>'+[1,2,3,4].map(function(k){return '<td>'+s.trump[k]+'</td>'}).join('')+'<td>'+s.trump.M+'</td><td>'+s.deals+'</td></tr>'}).join('');
-  return '<div class="card bars">'+bars+'</div><div class="card tbl-wrap"><table><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>';
+  var bars='<div class="tiles">'+tiles+'</div>';
+  var keys=[1,2,3,4,'M'];
+  var mx={};keys.forEach(function(k){mx[k]=Math.max.apply(null,PL.map(function(p){return c.S[p.id].trump[k]}))});
+  var head='<tr><th>Speler</th>'+keys.map(function(k){return '<th>'+(k==='M'?'Mul':suitHtml(k))+'</th>'}).join('')+'<th class="sep">Delen</th></tr>';
+  var body=PL.map(function(p){var s=c.S[p.id];
+    return '<tr style="--pc:var(--p-'+p.id+')"><td class="lead">'+esc(p.n)+'</td>'
+      +keys.map(function(k){var v=s.trump[k];return '<td>'+(v===0?'<span class="zero">·</span>':(v===mx[k]?'<span class="top">'+v+'</span>':v))+'</td>'}).join('')
+      +'<td class="sep">'+s.deals+'</td></tr>'}).join('');
+  return '<div class="card bars"><h3 class="feestkop">Feesten</h3>'+bars+'</div><div class="card tbl-wrap"><h3 class="feestkop">Troeven per speler</h3><table class="ttab"><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>';
 }
 function bestPartner(s){
   var best=null;Object.keys(s.partners).forEach(function(q){var p=s.partners[q];var rate=p.w/p.g;
@@ -375,7 +420,7 @@ function spelers(c){
     var bp=bestPartner(s);
     var avgDeal=s.deals?s.dealPts/s.deals:null,hit=s.deals?Math.round(s.dealHit/s.deals*100):null;
     var win=s.played?Math.round(s.won/s.played*100):null;
-    return '<div class="card player"><div class="head"><h3>'+esc(NAME[s.id])+'</h3><span class="badge">#'+(i+1)+'</span></div><h4 class="grp">Totalen</h4><dl>'
+    return '<div class="card player" style="--pc:var(--p-'+s.id+');--pi:var(--pi-'+s.id+')"><div class="head"><h3>'+esc(NAME[s.id])+'</h3><span class="badge">#'+(i+1)+'</span></div><h4 class="grp">Totalen</h4><dl>'
     +'<dt>Bomen gewonnen</dt><dd>'+s.won+' van '+s.played+(win!=null?' ('+win+'%)':'')+'</dd>'
     +'<dt>Punten totaal</dt><dd>'+s.pts+'</dd>'
     +'</dl><h4 class="grp">Gemiddeldes</h4><dl><dt>Gem. punten per boom</dt><dd>'+fmt1(s.played?s.pts/s.played:null)+'</dd>'
@@ -426,14 +471,15 @@ function sheetRows(g){
 }
 function gameHtml(g,idx){
   var f=finals(g),d=dur(g);
-  var an=(g.a||[]).map(function(x){return NAME[x]}).join(' + '),bn=(g.b||[]).map(function(x){return NAME[x]}).join(' + ');
+  function nm(x){return '<span class="pu" style="--pc:var(--p-'+x+')">'+esc(NAME[x])+'</span>'}
+  var an=(g.a||[]).map(nm).join(' + '),bn=(g.b||[]).map(nm).join(' + ');
   var edit=state.canEdit?'<button class="iconbtn" data-act="edit" data-id="'+esc(g.id)+'" title="Aanpassen" aria-label="Boom aanpassen"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>':'';
   var chev='<svg class="gchev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-  var mini='<div class="mini"><span class="mt1'+(f.winner==='a'?' win':'')+'">'+esc(an)+' <b>'+f.a+'</b></span><span class="mt2'+(f.winner==='b'?' win':'')+'">'+esc(bn)+' <b>'+f.b+'</b></span></div>';
+  var mini='<div class="mini"><span class="mt1'+(f.winner==='a'?' win':'')+'">'+an+' <b>'+f.a+'</b></span><span class="mt2'+(f.winner==='b'?' win':'')+'">'+bn+' <b>'+f.b+'</b></span></div>';
   return '<details class="game" data-key="g:'+esc(g.id||'')+'"'+(OPEN['g:'+g.id]?' open':'')+'><summary class="gh">'+chev+'<div class="eyebrow">Boom '+(idx+1)+(g.start?' · '+esc(g.start)+(g.end?'–'+esc(g.end):''):'')+(d!=null?' · '+fmtMin(d):'')+'</div>'+mini+'</summary>'+edit
    +'<table class="blad"><thead><tr>'
-   +'<th class="t1'+(f.winner==='a'?' win':'')+'"><div class="tn">'+esc(an)+'</div><div class="ts">'+f.a+'</div></th>'
-   +'<th class="t2'+(f.winner==='b'?' win':'')+'"><div class="tn">'+esc(bn)+'</div><div class="ts">'+f.b+'</div></th></tr></thead>'
+   +'<th class="t1'+(f.winner==='a'?' win':'')+'"><div class="tn">'+an+'</div><div class="ts">'+f.a+'</div></th>'
+   +'<th class="t2'+(f.winner==='b'?' win':'')+'"><div class="tn">'+bn+'</div><div class="ts">'+f.b+'</div></th></tr></thead>'
    +'<tbody>'+sheetRows(g)+'</tbody></table></details>';
 }
 function dayLabel(date){
