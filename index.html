@@ -135,6 +135,7 @@ table.ttab th.sep{padding-left:18px}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .player dl{margin:8px 0 0;font-size:14px;display:grid;grid-template-columns:1fr auto;gap:6px 12px}
 .player dt{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.player dt .sub{display:block;font-size:12px;opacity:.8;margin-top:1px;overflow:hidden;text-overflow:ellipsis}
 .player dd{margin:0;text-align:right;white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}
 .player .grp{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line);font-family:var(--font-body);font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .player .head+.grp{margin-top:12px}
@@ -350,7 +351,7 @@ function posChart(){
   var H=standingsByDate();
   if(!H.length)return '';
   var W=Math.max(280,Math.min(1148,($root.clientWidth||720)-34));
-  var padL=30,padR=W<520?64:96,padT=18,padB=30;
+  var padL=30,padR=W<520?62:90,padT=18,padB=30;
   var mx=1;H.forEach(function(h){PL.forEach(function(p){mx=Math.max(mx,h.S[p.id].won)})});
   var stepV=mx>10?Math.ceil(mx/5):1;mx=Math.ceil(mx/stepV)*stepV;
   var Ht=padT+padB+Math.max(120,Math.min(220,mx*40)),n=H.length+1,plotH=Ht-padT-padB;
@@ -380,13 +381,17 @@ function posChart(){
     });
   });
   var groups={};
-  PL.forEach(function(pl){var v=H[H.length-1].S[pl.id].won;(groups[v]=groups[v]||[]).push(pl.n)});
+  PL.forEach(function(pl){var v=H[H.length-1].S[pl.id].won;(groups[v]=groups[v]||[]).push(pl)});
   Object.keys(groups).forEach(function(v){
-    s+='<text class="nm" x="'+(+x(n-1)+12)+'" y="'+(y(+v,1.5)+4)+'">'+esc(groups[v].join(' · '))+'</text>';
+    var g=groups[v],y0=y(+v,1.5);
+    g.forEach(function(pl,i){
+      var yy=y0+(i-(g.length-1)/2)*16;
+      s+='<text class="nm" x="'+(+x(n-1)+14)+'" y="'+(yy+4)+'">'+esc(pl.n)+'</text>';
+    });
   });
   s+='</svg>';
   var leg='<div class="legend2">'+H[H.length-1].order.map(function(o){return '<span><i style="background:var(--p-'+o.id+')"></i>'+esc(NAME[o.id])+'</span>'}).join('')+'</div>';
-  return '<div class="card chart"><div class="chart-head"><h3>Evolutie der bomen</h3>'+leg+'</div>'+s+'</div>';
+  return '<div class="card chart"><div class="chart-head"><h3>Evolutie der bomen</h3></div>'+s+'</div>';
 }
 function troefSection(c){
   var tiles=[1,2,3,4,'M'].map(function(k){
@@ -423,14 +428,14 @@ function spelers(c){
     return '<div class="card player" style="--pc:var(--p-'+s.id+');--pi:var(--pi-'+s.id+')"><div class="head"><h3>'+esc(NAME[s.id])+'</h3><span class="badge">#'+(i+1)+'</span></div><h4 class="grp">Totalen</h4><dl>'
     +'<dt>Bomen gewonnen</dt><dd>'+s.won+' van '+s.played+(win!=null?' ('+win+'%)':'')+'</dd>'
     +'<dt>Punten totaal</dt><dd>'+s.pts+'</dd>'
-    +'</dl><h4 class="grp">Gemiddeldes</h4><dl><dt>Gem. punten per boom</dt><dd>'+fmt1(s.played?s.pts/s.played:null)+'</dd>'
+    +'</dl><h4 class="grp">Gemiddeldes</h4><dl><dt>Gem. per boom</dt><dd>'+fmt1(s.played?s.pts/s.played:null)+'</dd>'
     +'<dt>Gem. op eigen deel</dt><dd>'+fmt1(avgDeal)+' ptn</dd>'
     +'<dt>Punten op eigen deel</dt><dd>'+(hit==null?'–':hit+'%')+' ('+s.dealHit+'/'+s.deals+')</dd>'
-    +'</dl><h4 class="grp">Mul en meegaan</h4><dl><dt>Op de mul</dt><dd>'+s.mul+'×'+(s.mul?' (+'+s.mulWin+' / −'+(s.mul-s.mulWin)+')':'')+'</dd>'
-    +'<dt>Meegegaan</dt><dd>'+s.mee+'×'+(s.mee?' (+'+s.meePlus+' / −'+s.meeMin+(s.meeZero?' / 0:'+s.meeZero:'')+')':'')+'</dd>'
+    +'</dl><h4 class="grp">Mul en meegaan</h4><dl><dt>Op de mul<span class="sub">'+(s.mul?'+'+s.mulWin+' / −'+(s.mul-s.mulWin):'&nbsp;')+'</span></dt><dd>'+s.mul+'×</dd>'
+    +'<dt>Meegegaan<span class="sub">'+(s.mee?'+'+s.meePlus+' / −'+s.meeMin+(s.meeZero?' / 0:'+s.meeZero:''):'&nbsp;')+'</span></dt><dd>'+s.mee+'×</dd>'
     +'<dt>Mee, zelf het werk</dt><dd>'+s.zelf+'×</dd>'
     +'<dt>Mee, maat het werk</dt><dd>'+s.maat+'×</dd>'
-    +'<dt>Werk voor maat</dt><dd>'+s.werkMaat+'×</dd>'
+    +'<dt>Mul, werk voor maat</dt><dd>'+s.werkMaat+'×</dd>'
     +'</dl><h4 class="grp">Samen</h4><dl><dt>Beste maat</dt><dd>'+(bp?esc(NAME[bp.q])+' ('+bp.w+'/'+bp.g+')':'–')+'</dd>'
     +'</dl></div>';
   }).join('')+'</div>';
